@@ -1,0 +1,31 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+// Composer's generated vendor/bin/api-sync proxy sets this to the
+// consuming project's real vendor/autoload.php before including this
+// file. It must be preferred over the relative-path guesses below,
+// which break when the package is a symlinked path repository living
+// outside the consuming project's own vendor/ tree (e.g. a Docker bind
+// mount) - __DIR__ then resolves to the symlink target, not a path
+// nested three levels under the consuming project's vendor/ directory.
+if (isset($GLOBALS['_composer_autoload_path'])) {
+    require $GLOBALS['_composer_autoload_path'];
+} else {
+    $autoloadCandidates = [
+        __DIR__ . '/../vendor/autoload.php',
+        __DIR__ . '/../../../autoload.php',
+    ];
+
+    foreach ($autoloadCandidates as $candidate) {
+        if (is_file($candidate)) {
+            require $candidate;
+            break;
+        }
+    }
+}
+
+use Jeytekdev\ApiSync\Console\Application;
+
+(new Application())->run();

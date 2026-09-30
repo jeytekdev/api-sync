@@ -1,0 +1,19 @@
+<?php
+
+declare(strict_types=1);
+
+return [
+    'name' => 'My API',
+    'baseUrl' => 'https://api.example.test',
+    'source' => [
+        __DIR__ . '/src',
+    ],
+    'out' => __DIR__ . '/api-collections',
+    'formats' => ['postman', 'insomnia', 'bruno'],
+    // Endpoints removed from code are moved to a "_deprecated" bucket by
+    // default. Set to true to delete them outright on generate/check.
+    'prune' => false,
+    // Name shown in the generated Postman/Insomnia environment and used
+    // to fill in {{baseUrl}}/{{authToken}}. Defaults to 'name' above.
+    'environmentName' => null,
+];
