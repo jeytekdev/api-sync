@@ -39,4 +39,4 @@ jobs:
       - run: composer install --no-progress --prefer-dist
 
       - name: Verify Postman/Insomnia/Bruno collections are up to date
-        run: vendor/bin/api-sync check --config=api-sync.php
+        run: bin/api-sync check --config=api-sync.php

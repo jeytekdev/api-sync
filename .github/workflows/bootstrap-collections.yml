@@ -16,7 +16,7 @@ jobs:
 
       - run: composer install --no-progress --prefer-dist
 
-      - run: vendor/bin/api-sync generate --config=api-sync.php
+      - run: bin/api-sync generate --config=api-sync.php
 
       - uses: actions/upload-artifact@v4
         with:
